@@ -19,7 +19,7 @@ class App extends Component {
         console.log(i)
         sentence.push(response)
         this.setState({
-          texto: sentence[sentence.length - 1]
+          texto: sentence[i]
         })
       })
       console.log(sentence)
