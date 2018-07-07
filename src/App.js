@@ -47,16 +47,18 @@ class App extends Component {
       return (
         <div className="App">
 
-          {sentence.length > 1 &&
+          {i >= 1 &&
           <button onClick={this.previous}>Anterior</button>
           }
             <div>
+              <p>Frase N°{i+1}</p><br/>
               <p>{this.state.texto}</p>
               <button onClick={this.new}>Nueva</button>
 
             </div>
+          {!(i === sentence.length-1) &&
           <button onClick={this.next}>Siguiente</button>
-
+          }
         </div>
       );
     }
