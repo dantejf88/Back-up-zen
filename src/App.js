@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import getZen from "./api/fetch-zen"
 import "./App.css"
 
@@ -6,7 +6,7 @@ let sentence = []
 let i = -1
 class App extends Component {
   constructor() {
-        super();
+        super()
   this.state = {
         texto: []
         }
@@ -15,34 +15,37 @@ class App extends Component {
   new =() => {
       getZen()
       .then((response) => {
-        i++
-        console.log(i);
+        i = sentence.length
+        console.log(i)
         sentence.push(response)
         this.setState({
           texto: sentence[sentence.length - 1]
         })
       })
-      console.log(sentence);
+      console.log(sentence)
   }
 
   previous = () => {
-    i--;
-    console.log(i);
+    i--
+    console.log(i)
     this.setState({
       texto: sentence[i]
     })
 
   }
+
   next = () => {
     i++
-    console.log(i);
+    console.log(i)
     this.setState({
       texto: sentence[i]
     })
   }
+
   componentWillMount(){
     this.new()
   }
+
     render() {
       return (
         <div className="App">
@@ -51,7 +54,7 @@ class App extends Component {
           <button onClick={this.previous}>Anterior</button>
           }
             <div>
-              <p>Frase N°{i+1}</p><br/>
+               <p>Frase N°{i+1}</p><br/>
               <p>{this.state.texto}</p>
               <button onClick={this.new}>Nueva</button>
 
@@ -64,4 +67,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default App
