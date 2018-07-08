@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import getZen from "./api/fetch-zen"
 import { RingLoader } from 'react-spinners'
+import Phrase from "./components/phrase"
 import "./App.css"
 
 let sentence = []
@@ -9,8 +10,8 @@ class App extends Component {
   constructor() {
         super()
   this.state = {
-        texto: "",
-        loading: true,
+        texto: "Alto texto",
+        loading: false,
         limit: false
         }
   }
@@ -59,7 +60,7 @@ class App extends Component {
   }
 
   componentWillMount(){
-    this.new()
+    // this.new()
   }
 
     render() {
@@ -81,8 +82,10 @@ class App extends Component {
           }
           {!this.state.loading &&
             <div>
-               <p>Frase N°{i+1}</p><br/>
-               <p>{this.state.texto}</p>
+               <Phrase
+                    texto={this.state.texto}
+                    index={i}
+               />
                <button onClick={this.new}>Nueva</button>
             </div>
             }
