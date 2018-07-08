@@ -16,7 +16,7 @@ class App extends Component {
   }
 
   new =() => {
-    if(sentence.length <= 15){
+    if(sentence.length <= 13){
       getZen()
       .then((response) => {
         if(!sentence.includes(response)){
