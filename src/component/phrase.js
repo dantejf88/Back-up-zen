@@ -10,6 +10,8 @@ class Phrase extends React.Component {
         <p className="title">Zen precept N°{this.props.index + 1}</p>
         <ReactCSSTransitionGroup
           transitionName="fade"
+          transitionAppear={true}
+          transitionAppearTimeout={600}
           transitionEnterTimeout={600}
           transitionLeaveTimeout={600}
         >
