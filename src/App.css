@@ -40,12 +40,10 @@
   display: flex;
   flex-direction: column;
 }
-.transitionContainer{
 
-}
 .more{
   font-family: 'Buda', cursive;
-  margin: 100px auto;
+  margin: 200px auto;
 }
 .phraseContainer{
   position: fixed;
@@ -68,7 +66,10 @@
   font-size: 25px;
 }
 .sentence {
+  width: 500px;
   justify-content: center;
+  position: fixed;
+  right: calc(100vw / 2 - 250px);
 }
 .limit{
   width: 300px;
@@ -78,15 +79,14 @@
   margin-left: calc(100vw / 2 - 150px);
   margin-top: 30px;
 }
-.fade {
-}
+
 .fade-enter {
   opacity: 0.01;
 }
 
 .fade-enter.fade-enter-active {
   opacity: 1;
-  transition: opacity 500ms ease-in;
+  transition: opacity 600ms ease-in;
 }
 
 .fade-leave {
@@ -95,5 +95,5 @@
 
 .fade-leave.fade-leave-active {
   opacity: 0.01;
-  transition: opacity 500ms ease-in;
+  transition: opacity 600ms ease-in;
 }

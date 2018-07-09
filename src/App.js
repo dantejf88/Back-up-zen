@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import getZen from "./api/fetch-zen"
 import { RingLoader } from 'react-spinners'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import { Button, ButtonToolbar } from "react-bootstrap"
 import Phrase from "./component/phrase"
 import "./App.css"
 
 let sentence = [
-  "Mind your words, they are important.","Mind your words, they are important.","Mind your words, they are important.","Mind your words, they are important.","Mind your words, they are important.","Mind your words, they are important.","Mind your words, they are important.","Mind your words, they are important.","Mind your words, they are important.","Mind your words, they are important.","Mind your words, they are important.","Mind your words, they are important.","Mind your words, they are important."
+   "Mind your words, they are important.","Mind your words","Mind your words, they are important.","Mind your words, they are important.","Mind your words, they are important.","Mind your words, they are important.","Mind your words, they are important.","Mind your words, they are important.","Mind your words, they are important.","Mind your words, they are important.","Mind your words, they are important.","Mind your words, they are important.","Mind your words, they are important.","Mind your words, they are important.",
 ]
 let i = -1
 class App extends Component {
@@ -15,7 +14,7 @@ class App extends Component {
         super(props)
   this.state = {
         texto: "",
-        loading: true,
+        loading: false,
         limit: false
         }
   }
@@ -113,19 +112,12 @@ class App extends Component {
               }
             </div>
             <div className="middleContainer">
-              <div className="transitionContainer">
-                <ReactCSSTransitionGroup
-                  transitionName="fade"
-                  transitionEnterTimeout={500}
-                  transitionLeaveTimeout={500}
-                  >
+              <div>
                   <Phrase
                     className="phraseContainer"
                     texto={this.state.texto}
                     index={i}
-                    key={this.state.texto}
                     />
-                </ReactCSSTransitionGroup>
               </div>
 
               <div  className="more">
