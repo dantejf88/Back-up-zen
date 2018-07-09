@@ -25,13 +25,11 @@ export default class App extends Component {
       .then((response) => {
         if(!sentence.includes(response)){
           i = sentence.length
-          console.log(i)
           sentence.push(response)
           this.setState({
             texto: sentence[i],
             loading:false
           })
-          console.log(sentence)
         } else {
           this.new()
         }
@@ -44,7 +42,6 @@ export default class App extends Component {
   }
   previous = () => {
     i--
-    console.log(i)
     this.setState({
       texto: sentence[i],
       limit: false
@@ -53,7 +50,6 @@ export default class App extends Component {
   }
   next = () => {
     i++
-    console.log(i)
     this.setState({
       texto: sentence[i],
       limit: false
