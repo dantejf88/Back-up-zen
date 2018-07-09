@@ -9,7 +9,7 @@ let sentence = [
   "Keep it logically awesome.","Responsive is better than fast.","Speak like a human.","Anything added dilutes everything else.","Encourage flow.","Approachable is better than simple.","Favor focus over features.","Half measures are as bad as nothing at all.","Design for failure.","Non-blocking is better than blocking.","Mind your words, they are important.","Avoid administrative distraction.","Practicality beats purity.","It's not fully shipped until it's fast."
 ]
 let i = -1
-class App extends Component {
+export default class App extends Component {
   constructor(props) {
         super(props)
   this.state = {
@@ -42,7 +42,6 @@ class App extends Component {
       })
     }
   }
-
   previous = () => {
     i--
     console.log(i)
@@ -52,7 +51,6 @@ class App extends Component {
     })
 
   }
-
   next = () => {
     i++
     console.log(i)
@@ -61,7 +59,6 @@ class App extends Component {
       limit: false
     })
   }
-
   componentWillMount(){
     this.new()
   }
@@ -97,7 +94,6 @@ class App extends Component {
                   </ButtonToolbar>
                 </div>
               }
-
               {!(i === sentence.length-1) &&
                 <div  className="next">
                   <ButtonToolbar>
@@ -107,7 +103,6 @@ class App extends Component {
                       bsSize="large">
                       Next</Button>
                   </ButtonToolbar>
-
                 </div>
               }
             </div>
@@ -119,11 +114,9 @@ class App extends Component {
                     index={i}
                     />
               </div>
-
               <div  className="more">
                 <ButtonToolbar>
                   <Button
-
                     onClick={this.new}
                     disabled={this.state.loading}
                     bsSize="large">
@@ -140,5 +133,3 @@ class App extends Component {
     }
 
 }
-
-export default App
