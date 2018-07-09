@@ -97,3 +97,23 @@
   opacity: 0.01;
   transition: opacity 600ms ease-in;
 }
+
+@media screen and (max-width: 400px) {
+  .sentence {
+    width: 300px;
+    right: calc(100vw / 2 - 150px);
+  }
+  .phrases {
+    font-size: 30px;
+  }
+  .previous{
+    margin: 120px 70px;
+  }
+  .next{
+    margin: 120px 70px;
+    right: 0;
+  }
+  .more{
+    margin: 250px auto;
+  }
+}
