@@ -3,7 +3,7 @@ import getZen from "./api/fetch-zen"
 import { RingLoader } from 'react-spinners'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import { Button, ButtonToolbar } from "react-bootstrap"
-import Phrase from "./components/phrase"
+import Phrase from "./component/phrase"
 import "./App.css"
 
 let sentence = []
