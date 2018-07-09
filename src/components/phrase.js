@@ -1,11 +1,11 @@
 import React from "react"
-// import ""
+import "../App.css"
 
 const Phrase = (props) =>{
       return (
-      <div className="Modals">
-        <p>Frase N°{props.index + 1}</p><br/>
-        <p>{props.texto}</p>
+      <div className="frases">
+        <p>Zen precept N°{props.index + 1}</p>
+        <p className="sentence">{props.texto}</p>
 
       </div>
       )

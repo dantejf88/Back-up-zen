@@ -1,8 +1,78 @@
 .App {
+  height: 100vh;
+}
+
+.Spinner-css {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   flex-wrap: wrap;
+  height: 100vh;
+}
+.bigContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+}
+.midleContainer {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.frases {
+  font-size: 40px;
+  font-family: 'Buda', cursive;
+  text-shadow: 4px 4px 4px #aaa;
+  will-change: transform;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sentence {
+  justify-content: center;
+}
+.litleContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  width: 500px;
+}
 
+.more{
+  font-family: 'Buda', cursive;
+  display: flex;
+
+}
+.previous{
+  font-family: 'Buda', cursive;
+  display: flex;
+  float: right;
+}
+.next{
+  font-family: 'Buda', cursive;
+  display: flex;
+  float: right;
+}
+
+.fade-enter {
+  opacity: 0.01;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.fade-leave {
+  opacity: 1;
+}
+
+.fade-leave.fade-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }
