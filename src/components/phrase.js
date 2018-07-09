@@ -3,7 +3,7 @@ import "../App.css"
 
 const Phrase = (props) =>{
       return (
-      <div className="frases">
+      <div className="phrases">
         <p>Zen precept N°{props.index + 1}</p>
         <p className="sentence">{props.texto}</p>
 
