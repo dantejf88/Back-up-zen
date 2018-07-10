@@ -161,6 +161,9 @@
 }
 
 @media screen and (max-width: 400px) {
+  .Meditating {
+    font-size: 30px;
+  }
   .sentence {
     width: 300px;
     right: calc(100vw / 2 - 150px);
