@@ -161,7 +161,7 @@
 }
 
 @media screen and (max-width: 400px) {
-  .Meditating {
+  .MeditatingContainer .Meditating {
     font-size: 30px;
   }
   .sentence {
