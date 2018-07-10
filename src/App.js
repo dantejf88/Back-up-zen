@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import getZen from "./api/fetch-zen"
-import { RingLoader } from 'react-spinners'
-import { Button, ButtonToolbar } from "react-bootstrap"
 import Phrase from "./component/phrase"
 import "./App.css"
 
@@ -61,11 +59,8 @@ export default class App extends Component {
       return (
     <div  className="App">
         {this.state.loading &&
-        <div className='sweet-loading Spinner-css'>
-          <RingLoader
-            color={'#123abc'}
-            loading={this.state.loading}
-            />
+        <div className="lds-dual-ring">
+
         </div>
         }
         {!this.state.loading &&
@@ -79,24 +74,12 @@ export default class App extends Component {
             <div className="buttonsContainer">
               {i >= 1 &&
                 <div  className="previous">
-                  <ButtonToolbar>
-                    <Button
-                      onClick={this.previous}
-                      disabled={this.state.loading}
-                      bsSize="large">
-                      Previous</Button>
-                  </ButtonToolbar>
+                  <button className="buttons" onClick={this.previous}>Previous</button>
                 </div>
               }
               {!(i === sentence.length-1) &&
                 <div  className="next">
-                  <ButtonToolbar>
-                    <Button
-                      onClick={this.next}
-                      disabled={this.state.loading}
-                      bsSize="large">
-                      Next</Button>
-                  </ButtonToolbar>
+                  <button className="buttons" onClick={this.next}>Next</button>
                 </div>
               }
             </div>
@@ -109,13 +92,7 @@ export default class App extends Component {
                     />
               </div>
               <div  className="more">
-                <ButtonToolbar>
-                  <Button
-                    onClick={this.new}
-                    disabled={this.state.loading}
-                    bsSize="large">
-                    Press for more wisdom</Button>
-                </ButtonToolbar>
+                <button className="buttons" onClick={this.new}>Press for more wisdom</button>
               </div>
 
             </div>
