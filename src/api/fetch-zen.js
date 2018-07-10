@@ -3,7 +3,10 @@ import rp from 'request-promise'
 var getZen = () => {
   let request = {
     method: 'GET',
-    url: 'https://api.github.com/zen'
+    url: 'https://api.github.com/zen',
+    headers: {
+      "Authorization": "token 04b1f2e029f158681f795bdd9d2cb9584bbe5478"
+    }
   }
 
   return rp(request)
@@ -16,3 +19,4 @@ var getZen = () => {
 }
 
 export default getZen
+//curl -H "Authorization: token 04b1f2e029f158681f795bdd9d2cb9584bbe5478" https://api.github.com/zen
