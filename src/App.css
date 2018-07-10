@@ -1,13 +1,22 @@
 .App {
   height: 100%;
 }
-.lds-dual-ring {
+.MeditatingContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+.Meditating {
+  font-family: 'Buda', cursive;
+  font-size: 40px;
+}
+.lds-dual-ring:after {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
-.lds-dual-ring:after {
   content: " ";
   width: 46px;
   height: 46px;

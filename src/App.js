@@ -11,8 +11,11 @@ export default class App extends Component {
   this.state = {
         texto: "",
         loading: true,
-        limit: false
+        limit: false,
         }
+  }
+  componentWillMount(){
+    this.new()
   }
 
   new =() => {
@@ -24,9 +27,12 @@ export default class App extends Component {
           sentence.push(response)
           this.setState({
             texto: sentence[i],
-            loading:false
+            loading:false,
           })
         } else {
+          this.setState({
+            loading:true
+          })
           this.new()
         }
       })
@@ -51,17 +57,16 @@ export default class App extends Component {
       limit: false
     })
   }
-  componentWillMount(){
-    this.new()
-  }
 
     render() {
       return (
     <div  className="App">
-        {this.state.loading &&
-        <div className="lds-dual-ring">
-
-        </div>
+        {this.state.loading  &&
+          <div className="MeditatingContainer">
+            <div className="lds-dual-ring">
+            </div>
+            <p className="Meditating">Meditating</p>
+          </div>
         }
         {!this.state.loading &&
           <div className="bigContainer">
