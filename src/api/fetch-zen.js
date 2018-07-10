@@ -11,6 +11,7 @@ var getZen = () => {
 
   return rp(request)
     .then((response) => {
+      console.log(response);
       return response
     })
     .catch((error) => {
@@ -19,4 +20,3 @@ var getZen = () => {
 }
 
 export default getZen
-//curl -H "Authorization: token 04b1f2e029f158681f795bdd9d2cb9584bbe5478" https://api.github.com/zen

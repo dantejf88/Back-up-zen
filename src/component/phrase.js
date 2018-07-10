@@ -12,8 +12,8 @@ class Phrase extends React.Component {
           transitionName="fade"
           transitionAppear={true}
           transitionAppearTimeout={600}
-          transitionEnterTimeout={600}
-          transitionLeaveTimeout={600}
+          transitionEnterTimeout={400}
+          transitionLeaveTimeout={400}
         >
           <p className="sentence" key={this.props.texto}>{this.props.texto}</p>
         </ReactCSSTransitionGroup>

@@ -12,6 +12,7 @@ export default class App extends Component {
         texto: "",
         loading: true,
         limit: false,
+        meditating: false,
         }
   }
   componentWillMount(){
@@ -28,10 +29,11 @@ export default class App extends Component {
           this.setState({
             texto: sentence[i],
             loading:false,
+            meditating:false
           })
         } else {
           this.setState({
-            loading:true
+            meditating:true
           })
           this.new()
         }
@@ -62,8 +64,15 @@ export default class App extends Component {
       return (
     <div  className="App">
         {this.state.loading  &&
+          <div className="LoadingContainer">
+            <div className="spinner">
+            </div>
+            <p className="Meditating">Meditating</p>
+          </div>
+        }
+        {this.state.meditating  &&
           <div className="MeditatingContainer">
-            <div className="lds-dual-ring">
+            <div className="spinnerMeditating">
             </div>
             <p className="Meditating">Meditating</p>
           </div>

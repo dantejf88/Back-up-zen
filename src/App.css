@@ -1,18 +1,40 @@
 .App {
   height: 100%;
 }
-.MeditatingContainer{
+.LoadingContainer{
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   height: 100vh;
 }
+.MeditatingContainer {
+  width: 200px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: calc(100vw / 2 - 100px);
+  margin-top: 30px;
+}
 .Meditating {
   font-family: 'Buda', cursive;
   font-size: 40px;
+  text-shadow: 4px 4px 4px #aaa;
 }
-.lds-dual-ring:after {
+.spinnerMeditating{
+
+  content: " ";
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #cef;
+  border-color: #cef transparent #cef transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+.spinner:after {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,7 +148,7 @@
 
 .fade-enter.fade-enter-active {
   opacity: 1;
-  transition: opacity 600ms ease-in;
+  transition: opacity 400ms ease-in;
 }
 
 .fade-leave {
@@ -135,7 +157,7 @@
 
 .fade-leave.fade-leave-active {
   opacity: 0.01;
-  transition: opacity 600ms ease-in;
+  transition: opacity 400ms ease-in;
 }
 
 @media screen and (max-width: 400px) {
