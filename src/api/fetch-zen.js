@@ -11,7 +11,6 @@ var getZen = () => {
 
   return rp(request)
     .then((response) => {
-      console.log(response);
       return response
     })
     .catch((error) => {
