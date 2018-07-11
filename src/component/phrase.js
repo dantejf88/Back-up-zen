@@ -16,7 +16,7 @@ class Phrase extends React.Component {
           transitionEnterTimeout={400}
           transitionLeaveTimeout={400}
         >
-          <p className="sentence" key={this.props.texto}>{this.props.texto}</p>
+          <p className="sentence" key={this.props.text}>{this.props.text}</p>
         </ReactCSSTransitionGroup>
       </div>
       )
@@ -24,7 +24,7 @@ class Phrase extends React.Component {
 }
 
 Phrase.propTypes = {
-  texto: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired
 }
 export default Phrase;

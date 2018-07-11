@@ -9,10 +9,12 @@ export default class App extends Component {
   constructor(props) {
         super(props)
   this.state = {
-        texto: "",
         loading: true,
+        text: "",
         limit: false,
-        meditating: false,
+        meditating: 0,
+        previousState: 0,
+        nextState: 0
         }
   }
   componentWillMount(){
@@ -25,15 +27,18 @@ export default class App extends Component {
       .then((response) => {
         if(!sentence.includes(response)){
           i = sentence.length
+          this.previousButton()
+          this.nextButton()
           sentence.push(response)
           this.setState({
-            texto: sentence[i],
-            loading:false,
-            meditating:false
+            text: sentence[i],
+            meditating:0,
+            opacity: 1,
+            loading: false
           })
         } else {
           this.setState({
-            meditating:true
+            meditating:1
           })
           this.new()
         }
@@ -44,41 +49,67 @@ export default class App extends Component {
       })
     }
   }
+
   previous = () => {
     i--
     this.setState({
-      texto: sentence[i],
+      text: sentence[i],
       limit: false
     })
-
+  this.previousButton()
+  this.nextButton()
   }
   next = () => {
     i++
     this.setState({
-      texto: sentence[i],
+      text: sentence[i],
       limit: false
     })
+    this.previousButton()
+    this.nextButton()
   }
+  previousButton = () => {
+   if(i >= 1){
+    this.setState({
+      previousState: 1
+    })
+  } else {
+    this.setState({
+      previousState: 0
+    })
+  }
+}
+  nextButton = () => {
+   if(!(i <= sentence.length)){
+    this.setState({
+      nextState: -1
+    })
+  } else {
+    this.setState({
+      nextState: 0
+    })
+  }
+}
 
     render() {
       return (
     <div  className="App">
-        {this.state.loading  &&
+          {this.state.loading &&
           <div className="LoadingContainer">
             <div className="spinner">
             </div>
             <p className="Meditating">Meditating</p>
           </div>
-        }
-        {this.state.meditating  &&
-          <div className="MeditatingContainer">
-            <div className="spinnerMeditating">
-            </div>
-            <p className="Meditating">Meditating</p>
-          </div>
-        }
-        {!this.state.loading &&
+          }
+          {!this.state.loading &&
           <div className="bigContainer">
+
+              <div className="MeditatingContainer" style={{opacity: this.state.meditating}}>
+                <div className="spinnerMeditating">
+                </div>
+                <p className="Meditating">Meditating</p>
+              </div>
+
             {this.state.limit &&
               <div className="limit">
                 <p>That is all the wisdom you need, remember:</p>
@@ -86,22 +117,22 @@ export default class App extends Component {
               </div>
             }
             <div className="buttonsContainer">
-              {i >= 1 &&
-                <div  className="previous">
+
+                <div  className="previous" style={{opacity: this.state.previousState}}>
                   <button className="buttons" onClick={this.previous}>Previous</button>
                 </div>
-              }
-              {!(i === sentence.length-1) &&
-                <div  className="next">
+
+
+                <div  className="next" style={{opacity: this.state.nextState}}>
                   <button className="buttons" onClick={this.next}>Next</button>
                 </div>
-              }
+
             </div>
             <div className="middleContainer">
               <div>
                   <Phrase
                     className="phraseContainer"
-                    texto={this.state.texto}
+                    text={this.state.text}
                     index={i}
                     />
               </div>
@@ -112,7 +143,7 @@ export default class App extends Component {
             </div>
 
           </div>
-      }
+        }
       </div>
       )
     }
