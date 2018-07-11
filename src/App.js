@@ -9,12 +9,10 @@ export default class App extends Component {
   constructor(props) {
         super(props)
   this.state = {
-        loading: true,
         text: "",
-        limit: false,
+        limit: 0,
         meditating: 0,
-        previousState: 0,
-        nextState: 0
+        loading: true,
         }
   }
   componentWillMount(){
@@ -27,25 +25,22 @@ export default class App extends Component {
       .then((response) => {
         if(!sentence.includes(response)){
           i = sentence.length
-          this.previousButton()
-          this.nextButton()
           sentence.push(response)
           this.setState({
             text: sentence[i],
             meditating:0,
-            opacity: 1,
             loading: false
           })
         } else {
           this.setState({
-            meditating:1
+            meditating: 1
           })
           this.new()
         }
       })
     } else {
       this.setState({
-        limit: true
+        limit: 1
       })
     }
   }
@@ -54,42 +49,17 @@ export default class App extends Component {
     i--
     this.setState({
       text: sentence[i],
-      limit: false
+      limit: 0
     })
-  this.previousButton()
-  this.nextButton()
+
   }
   next = () => {
     i++
     this.setState({
       text: sentence[i],
-      limit: false
-    })
-    this.previousButton()
-    this.nextButton()
-  }
-  previousButton = () => {
-   if(i >= 1){
-    this.setState({
-      previousState: 1
-    })
-  } else {
-    this.setState({
-      previousState: 0
+      limit: 0
     })
   }
-}
-  nextButton = () => {
-   if(!(i <= sentence.length)){
-    this.setState({
-      nextState: -1
-    })
-  } else {
-    this.setState({
-      nextState: 0
-    })
-  }
-}
 
     render() {
       return (
@@ -110,23 +80,23 @@ export default class App extends Component {
                 <p className="Meditating">Meditating</p>
               </div>
 
-            {this.state.limit &&
-              <div className="limit">
+
+              <div className="limit" style={{opacity: this.state.limit}}>
                 <p>That is all the wisdom you need, remember:</p>
                 <p>Anything added dilutes everything else</p>
               </div>
-            }
-            <div className="buttonsContainer">
 
-                <div  className="previous" style={{opacity: this.state.previousState}}>
+            <div className="buttonsContainer">
+              {i >= 1 &&
+                <div  className="previous">
                   <button className="buttons" onClick={this.previous}>Previous</button>
                 </div>
-
-
-                <div  className="next" style={{opacity: this.state.nextState}}>
+              }
+              {!(i === sentence.length-1) &&
+                <div  className="next">
                   <button className="buttons" onClick={this.next}>Next</button>
                 </div>
-
+              }
             </div>
             <div className="middleContainer">
               <div>
