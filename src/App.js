@@ -106,7 +106,7 @@ export default class App extends Component {
                     />
               </div>
               <div  className="more">
-                <button className="buttons" onClick={this.new}>Press for more wisdom</button>
+                <button className="buttons" onClick={this.new}>Get more wisdom</button>
               </div>
 
             </div>
