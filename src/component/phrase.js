@@ -1,5 +1,6 @@
 import React from "react"
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import PropTypes from 'prop-types';
 import "../App.css"
 
 class Phrase extends React.Component {
@@ -20,5 +21,10 @@ class Phrase extends React.Component {
       </div>
       )
   }
+}
+
+Phrase.propTypes = {
+  texto: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired
 }
 export default Phrase;
