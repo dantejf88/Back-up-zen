@@ -50,7 +50,7 @@ export default class App extends Component {
     }
   }
   previous = () => {
-    if(i >= 1 && !this.state.loading){
+    if(i >= 1){
     this.setState({
       isActive: !this.state.isActive
     }, () => {
@@ -64,7 +64,7 @@ export default class App extends Component {
     )}
   }
   next = () => {
-    if(i <= 12){
+    if(!(i === sentence.length-1)){
     this.setState({
       isActive: !this.state.isActive
     }, () => {
@@ -92,7 +92,7 @@ export default class App extends Component {
                 <div className="firstBox">
                   {this.state.limit &&
                     <div className="flexCenter">
-                      <p>That is all the wisdom you need, remember:</p>
+                      <p>This is all the wisdom you need, remember:</p>
                       <p>Anything added dilutes everything else</p>
                     </div>
                   }
@@ -110,7 +110,7 @@ export default class App extends Component {
                     </p>
                   </div>
                   <div className="secondBoxButtons">
-                    {!(i === sentence.length-1) && i <= 12 &&
+                    {!(i === sentence.length-1) &&
                       <button className="buttons" onClick={this.next}>Next</button>
                     }
                   </div>

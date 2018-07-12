@@ -64,7 +64,6 @@ body,html, #root, .App {
   align-items: center;
   flex-direction: row;
   min-height: 150px;
-
 }
 .secondBoxButtons{
   flex: 1;
@@ -92,18 +91,42 @@ body,html, #root, .App {
   flex-direction: column;
   text-align: center;
 }
-
 .showText {
-  visibility: visible;
   opacity: 1;
-  transition: opacity .3s linear;
+  animation: fadeIn .3s linear;
 }
-
+@keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      25% {
+        opacity: .35;
+        }
+      75% {
+        opacity: .70;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
 .hideText {
-  visibility: hidden;
   opacity: 0;
-  transition: visibility 0s .3s, opacity .3s linear;
+  animation: fadeOut .3s linear;
 }
+@keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      25% {
+        opacity: .70;
+        }
+      75% {
+        opacity: .30;
+      }
+      100% {
+        opacity: 0;
+      }
+  }
 .thirdBox{
   flex:1;
   display: flex;
