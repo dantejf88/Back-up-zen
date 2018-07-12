@@ -10,8 +10,8 @@ export default class App extends Component {
         super(props)
   this.state = {
         text: "",
-        limit: 0,
-        meditating: 0,
+        limit: false,
+        meditating: false,
         loading: true,
         }
   }
@@ -28,19 +28,19 @@ export default class App extends Component {
           sentence.push(response)
           this.setState({
             text: sentence[i],
-            meditating:0,
+            meditating:false,
             loading: false
           })
         } else {
           this.setState({
-            meditating: 1
+            meditating: true
           })
           this.new()
         }
       })
     } else {
       this.setState({
-        limit: 1
+        limit: true
       })
     }
   }
@@ -49,7 +49,7 @@ export default class App extends Component {
     i--
     this.setState({
       text: sentence[i],
-      limit: 0
+      limit: false
     })
 
   }
@@ -57,65 +57,115 @@ export default class App extends Component {
     i++
     this.setState({
       text: sentence[i],
-      limit: 0
+      limit: false
     })
   }
 
     render() {
       return (
     <div  className="App">
-          {this.state.loading &&
-          <div className="LoadingContainer">
-            <div className="spinner">
+      {this.state.loading &&
+        <div className="LoadingContainer">
+          <div className="spinner">
+          </div>
+          <p className="Meditating">Meditating</p>
+        </div>
+        }
+
+        <div className="firstBox">
+        {this.state.meditating &&
+          <div className="MeditatingContainer">
+            <div className="spinnerMeditating">
             </div>
             <p className="Meditating">Meditating</p>
           </div>
-          }
-          {!this.state.loading &&
-          <div className="bigContainer">
-
-              <div className="MeditatingContainer" style={{opacity: this.state.meditating}}>
-                <div className="spinnerMeditating">
-                </div>
-                <p className="Meditating">Meditating</p>
-              </div>
-
-
-              <div className="limit" style={{opacity: this.state.limit}}>
-                <p>That is all the wisdom you need, remember:</p>
-                <p>Anything added dilutes everything else</p>
-              </div>
-
-            <div className="buttonsContainer">
-              {i >= 1 &&
-                <div  className="previous">
-                  <button className="buttons" onClick={this.previous}>Previous</button>
-                </div>
-              }
-              {!(i === sentence.length-1) &&
-                <div  className="next">
-                  <button className="buttons" onClick={this.next}>Next</button>
-                </div>
-              }
-            </div>
-            <div className="middleContainer">
-              <div>
-                  <Phrase
-                    className="phraseContainer"
-                    text={this.state.text}
-                    index={i}
-                    />
-              </div>
-              <div  className="more">
-                <button className="buttons" onClick={this.new}>Get more wisdom</button>
-              </div>
-
-            </div>
-
+        }
+        {this.state.limit &&
+          <div className="flexCenter">
+              <p>That is all the wisdom you need, remember:</p>
+              <p>Anything added dilutes everything else</p>
           </div>
         }
+        </div>
+        <div className="secondBox">
+          <div className="secondBoxButtons">
+            {!i >= 1 &&
+                <button className="buttons" onClick={this.previous}>Previous</button>
+            }
+          </div>
+          <div className="secondBoxText">
+            <Phrase
+                 className="phraseContainer"
+                 text={this.state.text}
+                 index={i}
+            />
+          </div>
+          <div className="secondBoxButtons">
+            {(i === sentence.length-1) &&
+                <button className="buttons" onClick={this.next}>Next</button>
+            }
+          </div>
+        </div>
+        <div className="thirdBox">
+          <div><button className="buttons" onClick={this.new}>Get more wisdom</button></div>
+        </div>
+      
       </div>
+
       )
     }
 
 }
+
+
+
+//   {this.state.loading &&
+//   <div className="LoadingContainer">
+//     <div className="spinner">
+//     </div>
+//     <p className="Meditating">Meditating</p>
+//   </div>
+//   }
+//   {!this.state.loading &&
+//   <div className="mainContainer">
+//
+//       <div className="MeditatingContainer" style={{opacity: this.state.meditating}}>
+//         <div className="spinnerMeditating">
+//         </div>
+//         <p className="Meditating">Meditating</p>
+//       </div>
+//
+//
+//       <div className="limit" style={{opacity: this.state.limit}}>
+//         <p>That is all the wisdom you need, remember:</p>
+//         <p>Anything added dilutes everything else</p>
+//       </div>
+//
+//     <div className="buttonsContainer">
+//       {i >= 1 &&
+//         <div  className="previous">
+//           <button className="buttons" onClick={this.previous}>Previous</button>
+//         </div>
+//       }
+//       {!(i === sentence.length-1) &&
+//         <div  className="next">
+//           <button className="buttons" onClick={this.next}>Next</button>
+//         </div>
+//       }
+//     </div>
+//     <div className="middleContainer">
+//       <div>
+//           <Phrase
+//             className="phraseContainer"
+//             text={this.state.text}
+//             index={i}
+//             />
+//       </div>
+//       <div  className="more">
+//         <button className="buttons" onClick={this.new}>Get more wisdom</button>
+//       </div>
+//
+//     </div>
+//
+//   </div>
+// }

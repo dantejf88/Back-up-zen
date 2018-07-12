@@ -1,12 +1,12 @@
-body {
-  margin: 0
+body,html, #root, .App {
+  margin: 0;
+  height: 100%;
+  flex:1;
+  display: flex;
 }
 
-.App {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.App{
+  flex-direction: column;
 }
 .LoadingContainer{
   display: flex;
@@ -58,7 +58,7 @@ body {
   }
 }
 
-.bigContainer{
+.mainContainer{
    display: flex;
 
 
@@ -144,25 +144,59 @@ body {
   transition: opacity 400ms ease-in;
 }
 
+
+
+.firstBox{
+  flex:1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  min-height: 150px;
+  background: red;
+}
+.flexCenter{
+  flex:1;
+  text-align: center;
+  margin: auto;
+  padding: auto;
+}
+.secondBox{
+  flex:1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  min-height: 150px;
+  background: blue;
+}
+.secondBoxButtons{
+  flex: 1;
+  height: 100%;
+  background: brown;
+  align-items: center;
+  justify-content: center;
+}
+.secondBoxText{
+  flex:3;
+  height: 100%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.thirdBox{
+  flex:1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 150px;
+  background: yellow;
+}
+
+
 @media screen and (max-width: 400px) {
-  .MeditatingContainer .Meditating {
-    font-size: 30px;
-  }
-  .sentence {
-    width: 300px;
-    right: calc(100vw / 2 - 150px);
-  }
-  .phrases {
-    font-size: 30px;
-  }
-  .previous{
-    margin: 120px 70px;
-  }
-  .next{
-    margin: 120px 70px;
-    right: 0;
-  }
-  .more{
-    margin: 220px auto;
+  .secondBox {
+    flex-direction: column;
   }
 }
