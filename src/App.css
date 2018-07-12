@@ -8,10 +8,16 @@ body,html, #root, .App {
 .App{
   flex-direction: column;
 }
+
 .LoadingContainer{
   display: flex;
+  height: 100%;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+}
+.LoadingContainer .Meditating {
+  font-size: 80px
 }
 .MeditatingContainer {
   display: flex;
@@ -71,11 +77,9 @@ body,html, #root, .App {
   font-size: 25px;
   background-color: white;
   border-radius: 10px;
-}
-.previous{
   font-family: 'Buda', cursive;
-
 }
+
 .next{
   font-family: 'Buda', cursive;
 }
@@ -117,73 +121,64 @@ body,html, #root, .App {
 
 }
 
-.fade-appear {
-  opacity: 0.01;
-}
-
-.fade-appear.fade-appear-active {
-  opacity: 1;
-  transition: opacity .6s ease-in;
-}
-
-.fade-enter {
-  opacity: 0.01;
-}
-
-.fade-enter.fade-enter-active {
-  opacity: 1;
-  transition: opacity 400ms ease-in;
-}
-
-.fade-leave {
-  opacity: 1;
-}
-
-.fade-leave.fade-leave-active {
-  opacity: 0.01;
-  transition: opacity 400ms ease-in;
-}
-
-
+/*Acá empieza la maqueta*/
 
 .firstBox{
-  flex:1;
+  flex:2;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
   min-height: 150px;
-  background: red;
 }
 .flexCenter{
+  font-size: 30px;
+  font-family: 'Buda', cursive;
   flex:1;
   text-align: center;
   margin: auto;
   padding: auto;
 }
 .secondBox{
-  flex:1;
+  flex:3;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
   min-height: 150px;
-  background: blue;
+
 }
 .secondBoxButtons{
   flex: 1;
+  display: flex;
   height: 100%;
-  background: brown;
   align-items: center;
   justify-content: center;
 }
 .secondBoxText{
   flex:3;
   height: 100%;
-  background: white;
+  font-size: 40px;
+  font-family: 'Buda', cursive;
+  text-shadow: 4px 4px 4px #aaa;
   display: flex;
   justify-content: center;
   align-items: center;
+  will-change: transform;
+  flex-direction: column;
+  text-align: center;
+}
+
+.showText {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity .3s linear;
+}
+
+.hideText {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s .3s, opacity .3s linear;
 }
 .thirdBox{
   flex:1;
@@ -191,12 +186,21 @@ body,html, #root, .App {
   justify-content: center;
   align-items: center;
   min-height: 150px;
-  background: yellow;
+
 }
 
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
+  .LoadingContainer .Meditating  {
+    font-size: 60px;
+  }
+  .flexCenter{
+    font-size: 25px;
+  }
   .secondBox {
-    flex-direction: column;
+    flex-direction: column-reverse;
+  }
+  .secondBoxText {
+    font-size: 30px;
   }
 }
