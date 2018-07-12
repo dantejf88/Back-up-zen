@@ -10,7 +10,6 @@ export default class App extends Component {
   this.state = {
         text: "",
         limit: false,
-        meditating: false,
         loading: true,
         isActive: false
         }
@@ -18,7 +17,6 @@ export default class App extends Component {
   componentWillMount(){
     this.new()
   }
-
   new =() => {
     if(sentence.length <= 13){
     this.setState({
@@ -31,18 +29,15 @@ export default class App extends Component {
               sentence.push(response)
               this.setState({
                 text: sentence[i],
-                meditating:false,
-                loading: false,
+                loading:false,
                 isActive: !this.state.isActive
               })
             } else {
-              setTimeout(()=>{
                 this.setState({
-                  meditating: true
+                  loading: true
                 })
                 this.new()
-              }, 300)
-              }
+            }
           })
       })
     } else {
@@ -51,9 +46,8 @@ export default class App extends Component {
       })
     }
   }
-
   previous = () => {
-    if(i >= 1 && !this.state.meditating){
+    if(i >= 1 && !this.state.loading){
     this.setState({
       isActive: !this.state.isActive
     }, () => {
@@ -61,7 +55,7 @@ export default class App extends Component {
       setTimeout(()=>{this.setState({
         text: sentence[i],
         limit: false,
-        meditating:false,
+        loading:false,
         isActive: !this.state.isActive
       })}, 300)
       }
@@ -76,18 +70,14 @@ export default class App extends Component {
       setTimeout(()=>{this.setState({
         text: sentence[i],
         limit: false,
-        meditating:false,
+        loading:false,
         isActive: !this.state.isActive
       })}, 300)
       }
     )}
   }
-
-
-
     render() {
       return (
-
           <div className="App">
             {this.state.loading &&
               <div className="LoadingContainer">
@@ -97,58 +87,44 @@ export default class App extends Component {
               </div>
             }
             {!this.state.loading &&
-            <div  className="App">
-              <div className="firstBox">
-                {this.state.limit && !this.state.meditating &&
-                  <div className="flexCenter">
-                    <p>That is all the wisdom you need, remember:</p>
-                    <p>Anything added dilutes everything else</p>
-                  </div>
-                }
-              </div>
-              <div className="secondBox">
-                <div className="secondBoxButtons">
-                  {i >= 1 &&
-                    <button className="buttons" onClick={this.previous}>Previous</button>
-                  }
-                </div>
-
-                <div className="secondBoxText">
-                  {this.state.meditating &&
-                    <div className="MeditatingContainer">
-                      <div className="spinnerMeditating">
-                      </div>
-                      <p className="Meditating">Meditating</p>
+              <div  className="App">
+                <div className="firstBox">
+                  {this.state.limit && !this.state.loading &&
+                    <div className="flexCenter">
+                      <p>That is all the wisdom you need, remember:</p>
+                      <p>Anything added dilutes everything else</p>
                     </div>
                   }
-                  <p className={this.state.isActive ? 'showText' : 'hideText'}>
-                    Zen precept N°{i + 1} <br />
-                    {this.state.text}
-                </p>
-
                 </div>
+                <div className="secondBox">
+                  <div className="secondBoxButtons">
+                    {i >= 1 &&
+                      <button className="buttons" onClick={this.previous}>Previous</button>
+                    }
+                  </div>
 
-              <div className="secondBoxButtons">
-                {!(i === sentence.length-1) && i <= 12 &&
-                  <button className="buttons" onClick={this.next}>Next</button>
-                }
+                  <div className="secondBoxText">
+                    <p className={this.state.isActive ? 'showText' : 'hideText'}>
+                      Zen precept N°{i + 1} <br />
+                      {this.state.text}
+                    </p>
+                  </div>
+                  <div className="secondBoxButtons">
+                    {!(i === sentence.length-1) && i <= 12 &&
+                      <button className="buttons" onClick={this.next}>Next</button>
+                    }
+                  </div>
+                  </div>
+                  <div className="thirdBox">
+                    <div>
+                      <button className="buttons" onClick={this.new}>Get more wisdom</button>
+                    </div>
+                  </div>
               </div>
-            </div>
-            <div className="thirdBox">
-              <div>
-                {!this.state.meditating &&
-                <button className="buttons" onClick={this.new}>Get more wisdom</button>
-                }
-              </div>
-            </div>
-            </div>
-      }
-    </div>
-
-
+            }
+        </div>
       )
     }
-
 }
 
 

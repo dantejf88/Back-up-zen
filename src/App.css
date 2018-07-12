@@ -4,11 +4,9 @@ body,html, #root, .App {
   flex:1;
   display: flex;
 }
-
 .App{
   flex-direction: column;
 }
-
 .LoadingContainer{
   display: flex;
   height: 100%;
@@ -16,19 +14,9 @@ body,html, #root, .App {
   align-items: center;
   justify-content: center;
 }
-.LoadingContainer .Meditating {
-  font-size: 80px
-}
-.MeditatingContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  min-height: 100%;
-}
 .Meditating {
   font-family: 'Buda', cursive;
-  font-size: 40px;
+  font-size: 80px;
   text-shadow: 4px 4px 4px #aaa;
 }
 .spinnerMeditating{
@@ -62,12 +50,6 @@ body,html, #root, .App {
   100% {
     transform: rotate(360deg);
   }
-}
-
-.mainContainer{
-   display: flex;
-
-
 }
 .buttonsContainer {
   display: flex;
@@ -201,7 +183,6 @@ body,html, #root, .App {
     content: " ";
     width: 46px;
     height: 46px;
-
   }
   .flexCenter{
     font-size: 25px;
