@@ -102,7 +102,6 @@ export default class App extends Component {
                       <button className="buttons" onClick={this.previous}>Previous</button>
                     }
                   </div>
-
                   <div className="secondBoxText">
                     <p className={this.state.isActive ? 'showText' : 'hideText'}>
                       Zen precept N°{i + 1} <br />
@@ -126,56 +125,3 @@ export default class App extends Component {
       )
     }
 }
-
-
-
-//   {this.state.loading &&
-//   <div className="LoadingContainer">
-//     <div className="spinner">
-//     </div>
-//     <p className="Meditating">Meditating</p>
-//   </div>
-//   }
-//   {!this.state.loading &&
-//   <div className="mainContainer">
-//
-//       <div className="MeditatingContainer" style={{opacity: this.state.meditating}}>
-//         <div className="spinnerMeditating">
-//         </div>
-//         <p className="Meditating">Meditating</p>
-//       </div>
-//
-//
-//       <div className="limit" style={{opacity: this.state.limit}}>
-//         <p>That is all the wisdom you need, remember:</p>
-//         <p>Anything added dilutes everything else</p>
-//       </div>
-//
-//     <div className="buttonsContainer">
-//       {i >= 1 &&
-//         <div  className="previous">
-//           <button className="buttons" onClick={this.previous}>Previous</button>
-//         </div>
-//       }
-//       {!(i === sentence.length-1) &&
-//         <div  className="next">
-//           <button className="buttons" onClick={this.next}>Next</button>
-//         </div>
-//       }
-//     </div>
-//     <div className="middleContainer">
-//       <div>
-//           <Phrase
-//             className="phraseContainer"
-//             text={this.state.text}
-//             index={i}
-//             />
-//       </div>
-//       <div  className="more">
-//         <button className="buttons" onClick={this.new}>Get more wisdom</button>
-//       </div>
-//
-//     </div>
-//
-//   </div>
-// }

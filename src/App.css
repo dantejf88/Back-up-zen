@@ -19,16 +19,6 @@ body,html, #root, .App {
   font-size: 80px;
   text-shadow: 4px 4px 4px #aaa;
 }
-.spinnerMeditating{
-  content: " ";
-  width: 46px;
-  height: 46px;
-  margin: 1px;
-  border-radius: 50%;
-  border: 5px solid #cef;
-  border-color: #cef transparent #cef transparent;
-  animation: lds-dual-ring 1.2s linear infinite;
-}
 .spinner:after {
   display: flex;
   justify-content: center;
@@ -51,60 +41,6 @@ body,html, #root, .App {
     transform: rotate(360deg);
   }
 }
-.buttonsContainer {
-  display: flex;
-
-}
-.buttons{
-  font-size: 25px;
-  background-color: white;
-  border-radius: 10px;
-  font-family: 'Buda', cursive;
-}
-
-.next{
-  font-family: 'Buda', cursive;
-}
-.middleContainer {
-  height: auto;
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-}
-
-.more{
-  font-family: 'Buda', cursive;
-
-}
-.phraseContainer{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.phrases {
-  font-size: 40px;
-  font-family: 'Buda', cursive;
-  text-shadow: 4px 4px 4px #aaa;
-  will-change: transform;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.title {
-  font-size: 25px;
-}
-.sentence {
-  justify-content: center;
-}
-.limit{
-
-  font-size: 20px;
-  font-family: 'Buda', cursive;
-
-}
-
-/*Acá empieza la maqueta*/
-
 .firstBox{
   flex:2;
   display: flex;
@@ -136,6 +72,12 @@ body,html, #root, .App {
   height: 100%;
   align-items: center;
   justify-content: center;
+}
+.buttons{
+  font-size: 25px;
+  background-color: white;
+  border-radius: 10px;
+  font-family: 'Buda', cursive;
 }
 .secondBoxText{
   flex:3;
@@ -170,19 +112,12 @@ body,html, #root, .App {
   min-height: 150px;
 
 }
-
-
 @media screen and (max-width: 500px) {
   .LoadingContainer .Meditating  {
     font-size: 60px;
   }
   .Meditating{
     font-size: 30px;
-  }
-  .spinnerMeditating{
-    content: " ";
-    width: 46px;
-    height: 46px;
   }
   .flexCenter{
     font-size: 25px;
