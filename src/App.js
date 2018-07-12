@@ -20,14 +20,14 @@ export default class App extends Component {
   }
 
   new =() => {
-    if(i < 13){
+    if(sentence.length <= 13){
     this.setState({
       isActive: false
     }, () => {
           getZen()
           .then((response) => {
             if(!sentence.includes(response)){
-              i++
+              i = sentence.length
               sentence.push(response)
               this.setState({
                 text: sentence[i],
@@ -36,11 +36,13 @@ export default class App extends Component {
                 isActive: !this.state.isActive
               })
             } else {
-              this.setState({
-                meditating: true
-              })
-              this.new()
-            }
+              setTimeout(()=>{
+                this.setState({
+                  meditating: true
+                })
+                this.new()
+              }, 300)
+              }
           })
       })
     } else {
@@ -51,7 +53,7 @@ export default class App extends Component {
   }
 
   previous = () => {
-    if(i >= 1){
+    if(i >= 1 && !this.state.meditating){
     this.setState({
       isActive: !this.state.isActive
     }, () => {
@@ -61,7 +63,7 @@ export default class App extends Component {
         limit: false,
         meditating:false,
         isActive: !this.state.isActive
-      })}, 500)
+      })}, 300)
       }
     )}
   }
@@ -76,7 +78,7 @@ export default class App extends Component {
         limit: false,
         meditating:false,
         isActive: !this.state.isActive
-      })}, 500)
+      })}, 300)
       }
     )}
   }
@@ -97,13 +99,6 @@ export default class App extends Component {
             {!this.state.loading &&
             <div  className="App">
               <div className="firstBox">
-                {this.state.meditating && !this.state.limit && !(i>12) &&
-                  <div className="MeditatingContainer">
-                    <div className="spinnerMeditating">
-                    </div>
-                    <p className="Meditating">Meditating</p>
-                  </div>
-                }
                 {this.state.limit && !this.state.meditating &&
                   <div className="flexCenter">
                     <p>That is all the wisdom you need, remember:</p>
@@ -119,6 +114,13 @@ export default class App extends Component {
                 </div>
 
                 <div className="secondBoxText">
+                  {this.state.meditating &&
+                    <div className="MeditatingContainer">
+                      <div className="spinnerMeditating">
+                      </div>
+                      <p className="Meditating">Meditating</p>
+                    </div>
+                  }
                   <p className={this.state.isActive ? 'showText' : 'hideText'}>
                     Zen precept N°{i + 1} <br />
                     {this.state.text}
@@ -133,7 +135,11 @@ export default class App extends Component {
               </div>
             </div>
             <div className="thirdBox">
-              <div><button className="buttons" onClick={this.new}>Get more wisdom</button></div>
+              <div>
+                {!this.state.meditating &&
+                <button className="buttons" onClick={this.new}>Get more wisdom</button>
+                }
+              </div>
             </div>
             </div>
       }

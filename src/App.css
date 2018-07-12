@@ -24,7 +24,7 @@ body,html, #root, .App {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
+  min-height: 100%;
 }
 .Meditating {
   font-family: 'Buda', cursive;
@@ -193,6 +193,15 @@ body,html, #root, .App {
 @media screen and (max-width: 500px) {
   .LoadingContainer .Meditating  {
     font-size: 60px;
+  }
+  .Meditating{
+    font-size: 30px;
+  }
+  .spinnerMeditating{
+    content: " ";
+    width: 46px;
+    height: 46px;
+
   }
   .flexCenter{
     font-size: 25px;
