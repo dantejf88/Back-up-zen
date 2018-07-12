@@ -40,10 +40,13 @@ export default class App extends Component {
             }
           })
       })
-    } else {
-      this.setState({
-        limit: true
-      })
+    } if(sentence.length === 13) {
+      setTimeout(() => {
+        this.setState({
+          limit: true
+        })
+
+      }, 500)
     }
   }
   previous = () => {
@@ -54,7 +57,6 @@ export default class App extends Component {
       i--
       setTimeout(()=>{this.setState({
         text: sentence[i],
-        limit: false,
         loading:false,
         isActive: !this.state.isActive
       })}, 300)
@@ -69,7 +71,6 @@ export default class App extends Component {
       i++
       setTimeout(()=>{this.setState({
         text: sentence[i],
-        limit: false,
         loading:false,
         isActive: !this.state.isActive
       })}, 300)
@@ -89,7 +90,7 @@ export default class App extends Component {
             {!this.state.loading &&
               <div  className="App">
                 <div className="firstBox">
-                  {this.state.limit && !this.state.loading &&
+                  {this.state.limit &&
                     <div className="flexCenter">
                       <p>That is all the wisdom you need, remember:</p>
                       <p>Anything added dilutes everything else</p>
@@ -116,7 +117,9 @@ export default class App extends Component {
                   </div>
                   <div className="thirdBox">
                     <div>
+                      {sentence.length <=13 &&
                       <button className="buttons" onClick={this.new}>Get more wisdom</button>
+                      }
                     </div>
                   </div>
               </div>
