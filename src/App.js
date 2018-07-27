@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import getZen from "./api/fetch-zen"
 import "./App.css"
 
-var sentence = []
-var i = -1
 export default class App extends Component {
   constructor(props) {
         super(props)
   this.state = {
+        sentence: [],
+        i: 0,
         text: "",
         limit: false,
         loading: true,
@@ -18,19 +18,20 @@ export default class App extends Component {
     this.new()
   }
   new =() => {
-    if(sentence.length <= 13){
+    let sentenceRes = this.state.sentence
+    if(sentenceRes.length <= 13){
     this.setState({
       isActive: false
     }, () => {
           getZen()
           .then((response) => {
-            if(!sentence.includes(response)){
-              i = sentence.length
-              sentence.push(response)
-              this.setState({
-                text: sentence[i],
-                loading:false,
-                isActive: !this.state.isActive
+            if(!(sentenceRes.includes(response))){
+                this.setState({
+                  sentence: [...sentenceRes, response],
+                  i: sentenceRes.length,
+                  text: response,
+                  loading: false,
+                  isActive: !this.state.isActive
               })
             } else {
                 this.setState({
@@ -39,8 +40,11 @@ export default class App extends Component {
                 this.new()
             }
           })
+          .catch((error) => {
+            throw new Error('GET request failed', error);
+          })
       })
-    } if(sentence.length === 13) {
+    } if(sentenceRes.length === 13) {
       setTimeout(() => {
         this.setState({
           limit: true
@@ -50,13 +54,14 @@ export default class App extends Component {
     }
   }
   previous = () => {
-    if(i >= 1){
+    let index = this.state.i
+    if(index >= 1){
     this.setState({
       isActive: !this.state.isActive
     }, () => {
-      i--
       setTimeout(()=>{this.setState({
-        text: sentence[i],
+        i: index -1,
+        text: this.state.sentence[index],
         loading:false,
         isActive: !this.state.isActive
       })}, 300)
@@ -64,13 +69,15 @@ export default class App extends Component {
     )}
   }
   next = () => {
-    if(!(i === sentence.length-1)){
+    let index = this.state.i
+    if(!(index === this.state.sentence.length)){
     this.setState({
       isActive: !this.state.isActive
     }, () => {
-      i++
+
       setTimeout(()=>{this.setState({
-        text: sentence[i],
+        i: index +1,
+        text: this.state.sentence[index],
         loading:false,
         isActive: !this.state.isActive
       })}, 300)
@@ -78,6 +85,7 @@ export default class App extends Component {
     )}
   }
     render() {
+      let sentenceLength = this.state.sentence.length
       return (
           <div className="App">
             {this.state.loading &&
@@ -99,25 +107,25 @@ export default class App extends Component {
                 </div>
                 <div className="secondBox">
                   <div className="secondBoxButtons">
-                    {i >= 1 &&
+                    {this.state.i >= 1 &&
                       <button className="buttons" onClick={this.previous}>Previous</button>
                     }
                   </div>
                   <div className="secondBoxText">
                     <p className={this.state.isActive ? 'showText' : 'hideText'}>
-                      Zen precept N°{i + 1} <br />
+                      Zen precept N°{this.state.i +1} <br />
                       {this.state.text}
                     </p>
                   </div>
                   <div className="secondBoxButtons">
-                    {!(i === sentence.length-1) &&
+                    {!(this.state.i === sentenceLength -1) &&
                       <button className="buttons" onClick={this.next}>Next</button>
                     }
                   </div>
                   </div>
                   <div className="thirdBox">
                     <div>
-                      {sentence.length <=13 &&
+                      {sentenceLength <= 13 &&
                       <button className="buttons" onClick={this.new}>Get more wisdom</button>
                       }
                     </div>

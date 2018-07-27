@@ -15,7 +15,7 @@ var getZen = () => {
     })
   }
   export default getZen
-  
+
 // import rp from 'request-promise'
 //
 // var getZen = () => {
