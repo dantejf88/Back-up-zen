@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import getZen from "./api/fetch-zen"
 import "./App.css"
 
-let sentence = []
-let i = -1
+var sentence = []
+var i = -1
 export default class App extends Component {
   constructor(props) {
         super(props)
