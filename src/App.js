@@ -74,7 +74,6 @@ export default class App extends Component {
     this.setState({
       isActive: !this.state.isActive
     }, () => {
-
       setTimeout(()=>{this.setState({
         i: index +1,
         text: this.state.sentence[index],
@@ -85,6 +84,7 @@ export default class App extends Component {
     )}
   }
     render() {
+      let index = this.state.i
       let sentenceLength = this.state.sentence.length
       return (
           <div className="App">
@@ -107,18 +107,18 @@ export default class App extends Component {
                 </div>
                 <div className="secondBox">
                   <div className="secondBoxButtons">
-                    {this.state.i >= 1 &&
+                    {index >= 1 &&
                       <button className="buttons" onClick={this.previous}>Previous</button>
                     }
                   </div>
                   <div className="secondBoxText">
                     <p className={this.state.isActive ? 'showText' : 'hideText'}>
-                      Zen precept N°{this.state.i +1} <br />
+                      Zen precept N°{index +1} <br />
                       {this.state.text}
                     </p>
                   </div>
                   <div className="secondBoxButtons">
-                    {!(this.state.i === sentenceLength -1) &&
+                    {!(index === sentenceLength -1) &&
                       <button className="buttons" onClick={this.next}>Next</button>
                     }
                   </div>
