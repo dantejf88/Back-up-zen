@@ -55,13 +55,14 @@ export default class App extends Component {
   }
   previous = () => {
     let index = this.state.i
+    let sentenceState = this.state.sentence
     if(index >= 1){
     this.setState({
       isActive: !this.state.isActive
     }, () => {
       setTimeout(()=>{this.setState({
         i: index -1,
-        text: this.state.sentence[index],
+        text: sentenceState[index],
         loading:false,
         isActive: !this.state.isActive
       })}, 300)
@@ -70,13 +71,14 @@ export default class App extends Component {
   }
   next = () => {
     let index = this.state.i
-    if(!(index === this.state.sentence.length)){
+    let sentenceState = this.state.sentence
+    if(!(index === sentenceState.length)){
     this.setState({
       isActive: !this.state.isActive
     }, () => {
       setTimeout(()=>{this.setState({
         i: index +1,
-        text: this.state.sentence[index],
+        text: sentenceState[index],
         loading:false,
         isActive: !this.state.isActive
       })}, 300)
