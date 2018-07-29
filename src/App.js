@@ -18,17 +18,17 @@ export default class App extends Component {
     this.new()
   }
   new =() => {
-    let sentenceRes = this.state.sentence
-    if(sentenceRes.length <= 13){
+    let sentenceState = this.state.sentence
+    if(sentenceState.length <= 13){
     this.setState({
       isActive: false
     }, () => {
           getZen()
           .then((response) => {
-            if(!(sentenceRes.includes(response))){
+            if(!(sentenceState.includes(response))){
                 this.setState({
-                  sentence: [...sentenceRes, response],
-                  i: sentenceRes.length,
+                  sentence: [...sentenceState, response],
+                  i: sentenceState.length,
                   text: response,
                   loading: false,
                   isActive: !this.state.isActive
@@ -44,7 +44,7 @@ export default class App extends Component {
             throw new Error('GET request failed', error);
           })
       })
-    } if(sentenceRes.length === 13) {
+    } if(sentenceState.length === 13) {
       setTimeout(() => {
         this.setState({
           limit: true
